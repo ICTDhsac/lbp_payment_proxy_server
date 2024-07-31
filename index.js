@@ -25,7 +25,7 @@ app.use((req, res, next) => {
 });
 
 app.get('/', (req, res) => {
-    res.send('Proxy server is running');
+    res.send('Proxy server is running!!');
 });
 
 app.get('/home', (req, res) => {
