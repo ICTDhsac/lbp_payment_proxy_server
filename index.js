@@ -28,6 +28,10 @@ app.get('/', (req, res) => {
     res.send('Proxy server is running');
 });
 
+app.get('/home', (req, res) => {
+    res.send('This is my home');
+});
+
 app.post('/proxy', (req, res) => {
     axios.post('http://222.127.109.129:8080/LBP-LinkBiz-RS/rs/postpayment', req.body, {
         headers: {
