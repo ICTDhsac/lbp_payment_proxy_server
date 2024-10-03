@@ -4,9 +4,6 @@ const path = require('path');
 const app = express();
 const port = process.env.PORT || 3000;
 
-const corsAnywhere = "https://cors-anywhere.herokuapp.com/";
-const apiUrl = "https://127.0.0.1:8000/users";
-
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
@@ -53,7 +50,8 @@ app.post('/proxy', async (req, res) => {
     axios.post('http://222.127.109.129:8080/LBP-LinkBiz-RS/rs/postpayment', req.body, {
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
-        }
+        },
+        timeout: 5000
     })
     .then(response => {
         console.log(response)
@@ -61,6 +59,7 @@ app.post('/proxy', async (req, res) => {
     })
     .catch(error => {
         console.log(error)
+        console.log('Error response:', error.response ? error.response.data : error.message);
         res.status(error.response ? error.response.status : 500).send(error.message);
     });
 });
