@@ -43,12 +43,15 @@ app.get('/form', (req, res) => {
 });
 
 app.post('/proxy', async (req, res) => {
+    console.log(req.body);
     try {
         const response = await axios({
             method: req.method,
             url: "http://222.127.109.129:8080/LBP-LinkBiz-RS/rs/postpayment", // URL to proxy
             data: req.body,
-            headers: req.body.headers 
+            headers: {
+                ...req.body.headers
+            }
         });
         res.send(response.data);
     } catch (error) {
