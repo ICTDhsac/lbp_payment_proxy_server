@@ -6029,54 +6029,8 @@ const decodedparams = decodeURIComponent(params);
 const formattedParams = decodedparams.replace(/\+/g, ' ');          
 // Display the result
  console.log(formattedParams);          
- //alert(formattedParams);
- 
-//  fetch(url, {
-//     method: 'POST',
-//     headers: {
-//         'Content-Type': 'application/x-www-form-urlencoded'
-//     },
-//     body: formattedParams
-    
-    
-// })
-// .then(response => {
-//                     // Check if the response is OK
-//                     console.log(response);
-//                     if (!response.ok) {
-//                         throw new Error('Network response was not ok ' + response.statusText);
-//                     }
-//                     return response.text();
-//                 })
-//                 .then(returnStr => {
-//                     // Display the raw response text
-//                     console.log('Raw Response Text:', returnStr);
-//                     alert('Raw Response Text: ' + returnStr);
 
-//                     // Check if returnStr is defined and not empty
-//                     if (returnStr) {
-//                         // Process the response
-//                         const st2 = returnStr.split('|');
-//                         let respCode = '';
-//                         let redirectURL = '';
-
-//                         if (st2.length > 0) respCode = st2[0];
-//                         if (st2.length > 1) redirectURL = st2[1];
-
-//                         if (respCode.toLowerCase() === '00') {
-//                             // Decode URL if necessary
-//                             window.location.href = decodeURIComponent(redirectURL);
-//                         } else {
-//                             document.getElementById('responseContainer').innerText = returnStr;
-//                         }
-//                     } else {
-//                         console.warn('Response text is empty or undefined.');
-//                     }
-//                 })
-//                 .catch(error => {
-//                     console.error('Error:', error);
-//                 });
-    fetch('http://localhost:3000/proxy', {
+    fetch('https://lbp-payment-proxy-server.vercel.app/proxy', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded'

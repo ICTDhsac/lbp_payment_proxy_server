@@ -43,23 +43,26 @@ app.get('/form', (req, res) => {
 });
 
 app.post('/proxy', async (req, res) => {
+
     console.log("proxy server");
     console.log('Request Body:', req.body);
     console.log('Request Headers:', req.headers);
 
-        axios.post('http://222.127.109.129:8080/LBP-LinkBiz-RS/rs/postpayment', req.body, {
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
-            }
-        })
-        .then(response => {
-            console.log(response)
-            res.send(response.data);
-        })
-        .catch(error => {
-            console.log(error)
-            res.status(error.response ? error.response.status : 500).send(error.message);
-        });
+    // res.send("00:https://lbp-payment-proxy-server.vercel.app/");
+
+    axios.post('http://222.127.109.129:8080/LBP-LinkBiz-RS/rs/postpayment', req.body, {
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        }
+    })
+    .then(response => {
+        console.log(response)
+        res.send(response.data);
+    })
+    .catch(error => {
+        console.log(error)
+        res.status(error.response ? error.response.status : 500).send(error.message);
+    });
 });
 
 app.listen(port, () => {
