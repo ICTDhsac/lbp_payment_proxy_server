@@ -6076,12 +6076,13 @@ const formattedParams = decodedparams.replace(/\+/g, ' ');
 //                 .catch(error => {
 //                     console.error('Error:', error);
 //                 });
-    fetch('https://lbp-payment-proxy-server.vercel.app/proxy', {
+    fetch('http://localhost:3000/proxy', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
         },
-        body: formattedParams
+        body: formattedParams,
+        // mode: 'no-cors'
     })
     .then(response => response.text())
     .then(returnStr => {
@@ -6094,12 +6095,12 @@ const formattedParams = decodedparams.replace(/\+/g, ' ');
             if (st2.length > 0) respCode = st2[0];
             if (st2.length > 1) redirectURL = st2[1];
 
-            alert(redirectURL);
-
             if (respCode.toLowerCase() === '00') {
                 // Decode URL if necessary
+                console.log(redirectURL)
                 window.open(redirectURL, '_blank');
             } else {
+                console.log('responseContainer')
                 document.getElementById('responseContainer').innerText = returnStr;
             }
         } else {

@@ -43,37 +43,24 @@ app.get('/form', (req, res) => {
 });
 
 app.post('/proxy', async (req, res) => {
-    console.log(req.body);
-    try {
-        const response = await axios({
-            method: req.method,
-            url: "http://222.127.109.129:8080/LBP-LinkBiz-RS/rs/postpayment", // URL to proxy
-            data: req.body,
-            headers: {
-                ...req.body.headers
-            }
-        });
-        res.send(response.data);
-    } catch (error) {
-        res.status(error.response ? error.response.status : 500).send(error.message);
-    }
-});
+    console.log("proxy server");
+    console.log('Request Body:', req.body);
+    console.log('Request Headers:', req.headers);
 
-// app.get('/users', (req, res) => {
-    
-//     axios.get('http://127.0.0.1:8000/users', req.body, {
-//         // headers: {
-//         //     'Content-Type': 'application/json'
-//         // }
-//     })
-//     .then(response => {
-//         console.log(response)
-//         res.send(response.data);
-//     })
-//     .catch(error => {
-//         res.status(error.response ? error.response.status : 500).send(error.message);
-//     });
-// });
+        axios.post('http://222.127.109.129:8080/LBP-LinkBiz-RS/rs/postpayment', req.body, {
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        })
+        .then(response => {
+            console.log(response)
+            res.send(response.data);
+        })
+        .catch(error => {
+            console.log(error)
+            res.status(error.response ? error.response.status : 500).send(error.message);
+        });
+});
 
 app.listen(port, () => {
     console.log(`Proxy server running at http://localhost:${port}`);
