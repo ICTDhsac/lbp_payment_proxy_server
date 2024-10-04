@@ -6030,7 +6030,7 @@ const formattedParams = decodedparams.replace(/\+/g, ' ');
 // Display the result
  console.log(formattedParams);          
 
-    fetch('https://lbp-payment-proxy-server.vercel.app/proxy', {
+    fetch('http://localhost:3000/proxy', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
@@ -6072,23 +6072,23 @@ const formattedParams = decodedparams.replace(/\+/g, ' ');
         document.body.scrollTop = 0; // For Safari
         document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
         optionGroup1List    
-        $("#paymentBtn").hide();
-        $("#optionGroup1").hide();
-        $("#optionGroup1Sum").hide();   
-        $("#optionGroup3a").hide();
-        $("#optionGroup3b").hide();
-        $("#optionGroup3c").hide();
-        $("#optionGroup3").hide();
-        $('#cbx').prop('checked', false);   
-        $("#trandetail2").val('');
-        $("#trandetail4").val('');
-        $("#trandetail5").val('');
-        $("#trandetail6").val('');  
-        clearSummaryLine('all');
-        resetDropdown('all');
-        resetCheckbox('all');
-        resetInputbox('all');
-        updateSummary();
+        // $("#paymentBtn").hide();
+        // $("#optionGroup1").hide();
+        // $("#optionGroup1Sum").hide();   
+        // $("#optionGroup3a").hide();
+        // $("#optionGroup3b").hide();
+        // $("#optionGroup3c").hide();
+        // $("#optionGroup3").hide();
+        // $('#cbx').prop('checked', false);   
+        // $("#trandetail2").val('');
+        // $("#trandetail4").val('');
+        // $("#trandetail5").val('');
+        // $("#trandetail6").val('');  
+        // clearSummaryLine('all');
+        // resetDropdown('all');
+        // resetCheckbox('all');
+        // resetInputbox('all');
+        // updateSummary();
         //showItemPrices('all');
         scrollToTop();
         
